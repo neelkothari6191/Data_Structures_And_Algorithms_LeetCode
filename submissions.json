@@ -11,5 +11,16 @@
       "Sorting",
       "Two Pointers"
     ]
+  },
+  {
+    "id": 566,
+    "title": "Reshape the Matrix",
+    "title_slug": "reshape-the-matrix",
+    "difficulty": "Easy",
+    "skills": [
+      "Array",
+      "Matrix",
+      "Simulation"
+    ]
   }
 ]
