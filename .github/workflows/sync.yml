@@ -1,18 +1,22 @@
 name: LeetCode Sync
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:      # Manual trigger
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 8 * * *'   # Runs daily at 8am
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Run LeetCode Synchronizer
-        # Switch to the latest patched version
-        uses: dos-m0nk3y/LeetCode-Synchronizer@v1.2.3 
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Sync LeetCode Submissions
+        uses: joshcai/leetcode-sync@v1.7.0
         with:
-          GITHUB_TOKEN: ${{ github.token }}
-          LEETCODE_SESSION: ${{ secrets.LEETCODE_SESSION }}
-          LEETCODE_CSRF_TOKEN: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          github-token: ${{ github.token }}
+          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
+          destination-folder: my-submissions
+          verbose: true
